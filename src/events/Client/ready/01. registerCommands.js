@@ -1,8 +1,8 @@
-const areCommandsDifferent = require("../../../utils/commands/areCommandsDifferent");
-const getApplicationCommands = require("../../../utils/commands/getApplicationCommands");
-const getLocalCommands = require("../../../utils/commands/getLocalCommands");
-const { testServer } = require("../../../config");
-const client = require("../../../index");
+const areCommandsDifferent = require("#utils/commands/areCommandsDifferent.js");
+const getApplicationCommands = require("#utils/commands/getApplicationCommands.js");
+const getLocalCommands = require("#utils/commands/getLocalCommands.js");
+const { testServer } = require("#config.js");
+const client = require("#index.js");
 
 client.on(__dirname.replace(/\\/g, "/").split("/").pop(), async () => {
     try {
