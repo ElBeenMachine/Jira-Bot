@@ -1,12 +1,20 @@
-const { EmbedBuilder, Client } = require("discord.js");
+const { EmbedBuilder, Client, Embed } = require("discord.js");
 
-class Embed extends EmbedBuilder {
+/**
+ *
+ * @inheritdoc
+ * @class Embed @extend EmbedBuilder
+ */
+class EmbedClass extends EmbedBuilder {
     /**
      *
      * @param {Client} client
      * @param {Object} options
      */
     constructor(client, options = {}) {
+        if (!client)
+            throw new Error("A client must be provided to the Embed class");
+
         super();
         this.setTitle(options?.title || "Untitled Embed");
         if (options?.description) {
@@ -21,4 +29,4 @@ class Embed extends EmbedBuilder {
     }
 }
 
-module.exports = Embed;
+module.exports = EmbedClass;

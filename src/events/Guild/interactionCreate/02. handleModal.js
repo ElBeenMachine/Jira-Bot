@@ -30,10 +30,14 @@ client.on(
                     });
                 }
 
+                // Get the site
+                const data = await res.json();
+                const site = data[0].url;
+
                 // Save the token
                 client.db.run(
-                    "INSERT INTO users (id, accessToken) VALUES (?, ?)",
-                    [interaction.user.id, token]
+                    "INSERT INTO users (id, accessToken, site) VALUES (?, ?, ?)",
+                    [interaction.user.id, token, site]
                 );
 
                 // Send a success message
