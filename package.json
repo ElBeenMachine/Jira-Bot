@@ -18,9 +18,13 @@
     "homepage": "https://github.com/LJMU-SE/jira-bot#readme",
     "dependencies": {
         "discord.js": "^14.14.1",
-        "dotenv": "^16.4.1"
+        "dotenv": "^16.4.1",
+        "sqlite3": "^5.1.7"
     },
     "devDependencies": {
         "nodemon": "^3.0.3"
+    },
+    "imports": {
+        "#*": "./src/*"
     }
 }

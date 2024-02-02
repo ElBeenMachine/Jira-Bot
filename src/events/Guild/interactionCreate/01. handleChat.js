@@ -1,7 +1,7 @@
-const getLocalCommands = require("../../../utils/commands/getLocalCommands");
-const { devs, testServer } = require("../../../config");
-const Embed = require("../../../structures/Embed");
-const client = require("../../../index");
+const getLocalCommands = require("#utils/commands/getLocalCommands.js");
+const { devs, testServer } = require("#config.js");
+const Embed = require("#structures/Embed.js");
+const client = require("#index.js");
 
 client.on(
     __dirname.replace(/\\/g, "/").split("/").pop(),
