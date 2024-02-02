@@ -20,7 +20,7 @@ const client = new Client({
         activities: [
             {
                 name: "JIRA",
-                type: ActivityType.WATCHING,
+                type: ActivityType.Watching,
             },
         ],
     },

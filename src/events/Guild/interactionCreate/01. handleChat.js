@@ -17,8 +17,6 @@ client.on(
 
             if (!commandObject) return;
 
-            await interaction.deferReply();
-
             // Check if dev only
             if (commandObject.devOnly) {
                 if (!devs.includes(interaction.member.id)) {
@@ -60,7 +58,7 @@ client.on(
             // Execute
             await commandObject.callback(client, interaction);
         } catch (error) {
-            await interaction.deleteReply();
+            console.error(error);
 
             const errorEmbed = new Embed(client, {
                 title: "An error has occurred",
@@ -68,10 +66,17 @@ client.on(
                 color: 0xff0000,
             });
 
-            await interaction.channel.send({
-                embeds: [errorEmbed],
-                ephemeral: true,
-            });
+            if (interaction.replied || interaction.deferred) {
+                await interaction.editReply({
+                    embeds: [errorEmbed],
+                    ephemeral: true,
+                });
+            } else {
+                await interaction.reply({
+                    embeds: [errorEmbed],
+                    ephemeral: true,
+                });
+            }
         }
     }
 );
