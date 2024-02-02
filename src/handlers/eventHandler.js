@@ -1,5 +1,4 @@
-const { Client } = require("discord.js");
-const getAllFiles = require("../utils/getAllFiles");
+const getAllFiles = require("#utils/getAllFiles.js");
 const path = require("path");
 
 function eventHandler(client) {

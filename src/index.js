@@ -7,7 +7,7 @@ const {
     ActivityType,
 } = require("discord.js");
 
-const eventHandler = require("./handlers/eventHandler");
+const eventHandler = require("#handlers/eventHandler.js");
 
 const client = new Client({
     shards: "auto",
@@ -20,7 +20,7 @@ const client = new Client({
         activities: [
             {
                 name: "JIRA",
-                type: ActivityType.WATCHING,
+                type: ActivityType.Watching,
             },
         ],
     },

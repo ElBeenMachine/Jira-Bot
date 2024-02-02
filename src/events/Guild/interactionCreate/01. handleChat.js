@@ -1,7 +1,7 @@
-const getLocalCommands = require("../../../utils/commands/getLocalCommands");
-const { devs, testServer } = require("../../../config");
-const Embed = require("../../../structures/Embed");
-const client = require("../../../index");
+const getLocalCommands = require("#utils/commands/getLocalCommands.js");
+const { devs, testServer } = require("#config.js");
+const Embed = require("#structures/Embed.js");
+const client = require("#index.js");
 
 client.on(
     __dirname.replace(/\\/g, "/").split("/").pop(),
@@ -16,8 +16,6 @@ client.on(
             );
 
             if (!commandObject) return;
-
-            await interaction.deferReply();
 
             // Check if dev only
             if (commandObject.devOnly) {
@@ -60,7 +58,7 @@ client.on(
             // Execute
             await commandObject.callback(client, interaction);
         } catch (error) {
-            await interaction.deleteReply();
+            console.error(error);
 
             const errorEmbed = new Embed(client, {
                 title: "An error has occurred",
@@ -68,10 +66,17 @@ client.on(
                 color: 0xff0000,
             });
 
-            await interaction.channel.send({
-                embeds: [errorEmbed],
-                ephemeral: true,
-            });
+            if (interaction.replied || interaction.deferred) {
+                await interaction.editReply({
+                    embeds: [errorEmbed],
+                    ephemeral: true,
+                });
+            } else {
+                await interaction.reply({
+                    embeds: [errorEmbed],
+                    ephemeral: true,
+                });
+            }
         }
     }
 );
