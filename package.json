@@ -1,0 +1,26 @@
+{
+    "name": "jira-bot",
+    "version": "1.0.0",
+    "description": "A Discord bot designed to report JIRA project updates",
+    "main": "src/index.js",
+    "scripts": {
+        "dev": "nodemon src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LJMU-SE/jira-bot.git"
+    },
+    "author": "Ollie Beenham",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LJMU-SE/jira-bot/issues"
+    },
+    "homepage": "https://github.com/LJMU-SE/jira-bot#readme",
+    "dependencies": {
+        "discord.js": "^14.14.1",
+        "dotenv": "^16.4.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.3"
+    }
+}
