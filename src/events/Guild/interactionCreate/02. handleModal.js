@@ -31,8 +31,20 @@ client.on(
                 }
 
                 // Save the token
+                client.db.run(
+                    "INSERT INTO users (id, accessToken) VALUES (?, ?)",
+                    [interaction.user.id, token]
+                );
+
+                // Send a success message
+                const authEmbed = new Embed(client, {
+                    title: "🔑 You are now authenticated",
+                    description:
+                        "Use `/help` for more information on your available commands.",
+                });
+
                 await interaction.reply({
-                    content: `Your token is: \`\`\`${token}\`\`\``,
+                    embeds: [authEmbed],
                     ephemeral: true,
                 });
             });

@@ -21,6 +21,32 @@ module.exports = {
      * @param {Interaction} interaction
      */
     callback: async (client, interaction) => {
+        // Check if the user is already authenticated
+        function getUser(id) {
+            return new Promise((resolve, reject) => {
+                client.db.get(
+                    "SELECT * FROM users WHERE id = ?",
+                    [id],
+                    (err, row) => {
+                        if (err) {
+                            console.error(err);
+                            reject(err);
+                        }
+                        resolve(row);
+                    }
+                );
+            });
+        }
+
+        const user = await getUser(interaction.user.id);
+
+        if (user) {
+            return await interaction.reply({
+                content: "You are already authenticated with JIRA.",
+                ephemeral: true,
+            });
+        }
+
         // Create the modal
         const modal = new ModalBuilder()
             .setCustomId("jiraAuthModal")
