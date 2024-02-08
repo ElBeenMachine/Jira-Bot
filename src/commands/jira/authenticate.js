@@ -54,11 +54,11 @@ module.exports = {
 
         // Add components to modal
         const tokenInput = new TextInputBuilder()
-            .setCustomId("tokenInput")
-            .setLabel("Enter your JIRA access token")
+            .setCustomId("codeInput")
+            .setLabel("Enter your JIRA access code")
             .setStyle(TextInputStyle.Short)
             .setRequired(true)
-            .setPlaceholder("Your JIRA access token");
+            .setPlaceholder("Your JIRA access code");
 
         const actionRow = new ActionRowBuilder().addComponents(tokenInput);
 

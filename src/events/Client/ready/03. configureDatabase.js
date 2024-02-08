@@ -34,6 +34,6 @@ client.on(__dirname.replace(/\\/g, "/").split("/").pop(), (client) => {
 
     // Create the users table
     client.db.run(
-        "CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, accessToken TEXT UNIQUE, site TEXT NOT NULL)"
+        "CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, accessToken TEXT NOT NULL UNIQUE, refreshToken TEXT NOT NULL UNIQUE, expires TEXT NOT NULL)"
     );
 });
