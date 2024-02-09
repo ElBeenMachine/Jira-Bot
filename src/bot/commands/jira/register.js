@@ -1,5 +1,5 @@
 const { Client, Interaction } = require("discord.js");
-const Embed = require("../../structures/Embed");
+const Embed = require("#global/structures/Embed.js");
 
 module.exports = {
     name: "register",

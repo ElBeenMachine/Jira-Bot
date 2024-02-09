@@ -1,5 +1,5 @@
 const path = require("path");
-const getAllFiles = require("#utils/getAllFiles.js");
+const getAllFiles = require("#bot/utils/getAllFiles.js");
 
 function getLocalCommands(exceptions = []) {
     let localCommands = [];

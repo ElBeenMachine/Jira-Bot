@@ -7,7 +7,7 @@ const {
     ActivityType,
 } = require("discord.js");
 
-const eventHandler = require("#handlers/eventHandler.js");
+const eventHandler = require("#bot/handlers/eventHandler.js");
 
 const client = new Client({
     shards: "auto",

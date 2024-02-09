@@ -1,4 +1,4 @@
-const getAllFiles = require("#utils/getAllFiles.js");
+const getAllFiles = require("#bot/utils/getAllFiles.js");
 const path = require("path");
 
 function eventHandler(client) {

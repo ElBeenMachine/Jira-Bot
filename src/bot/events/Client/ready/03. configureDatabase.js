@@ -1,4 +1,4 @@
-const client = require("#index.js");
+const client = require("#bot/index.js");
 const sqlite = require("sqlite3").verbose();
 const fs = require("fs");
 const { exit } = require("process");
@@ -15,21 +15,16 @@ client.on(__dirname.replace(/\\/g, "/").split("/").pop(), (client) => {
             console.error(`🔴 | ${err}`);
             exit(1);
         }
-        console.log("🟢 | Connected to the database");
+        console.log("🟢 | Bot Connected to the database");
     });
 
     /**
      * Create tables if they don't exist
      */
 
-    // Create the guilds table
+    // Create the tracking table
     client.db.run(
-        "CREATE TABLE IF NOT EXISTS guilds (id TEXT PRIMARY KEY, name TEXT UNIQUE)"
-    );
-
-    // Create the projects table
-    client.db.run(
-        "CREATE TABLE IF NOT EXISTS projects (id TEXT PRIMARY KEY, channelID TEXT NOT NULL, guild TEXT NOT NULL, FOREIGN KEY(guild) REFERENCES guilds(id))"
+        "CREATE TABLE IF NOT EXISTS projects (id INTEGER PRIMARY KEY AUTOINCREMENT, projectID TEXT NOT NULL, guildID TEXT NOT NULL, channelID TEXT NOT NULL)"
     );
 
     // Create the users table

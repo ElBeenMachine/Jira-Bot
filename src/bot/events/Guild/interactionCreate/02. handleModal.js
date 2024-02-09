@@ -1,5 +1,5 @@
-const client = require("../../../index");
-const Embed = require("../../../structures/Embed");
+const client = require("#bot/index.js");
+const Embed = require("#global/structures/Embed.js");
 
 client.on(
     __dirname.replace(/\\/g, "/").split("/").pop(),
