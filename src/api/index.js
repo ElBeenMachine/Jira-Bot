@@ -101,11 +101,12 @@ app.post("/jira/webhook", async (req, res) => {
             const channel = client.channels.cache.get(item.channelID);
             if (!channel) {
                 console.error(
-                    `🔴 | Channel with ID ${channel.channelID} not found`
+                    `🔴 | Channel with ID ${item.channelID} not found, skipping`
                 );
+            } else {
+                console.log(`🟢 | Sending embed to channel ${channel.id}`);
+                await channel.send({ embeds: [embed] });
             }
-
-            await channel.send({ embeds: [embed] });
         }
     }
 
